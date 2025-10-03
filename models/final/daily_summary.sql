@@ -1,0 +1,8 @@
+SELECT
+    CAST(PICKUP_DATETIME AS DATE) AS trip_date,
+    COUNT(*) AS total_trips,
+    AVG(TRIP_DISTANCE) AS avg_distance,
+    SUM(TOTAL_AMOUNT) AS total_revenue
+FROM {{ ref('CURATION_YELLOW_TAXI') }}
+GROUP BY CAST(PICKUP_DATETIME AS DATE)
+ORDER BY trip_date

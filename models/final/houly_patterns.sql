@@ -1,0 +1,8 @@
+SELECT
+    PICKUP_HOUR,
+    COUNT(*) AS trip_count,
+    SUM(TOTAL_AMOUNT) AS total_revenue,
+    AVG(AVG_SPEED_MPH) AS avg_speed
+FROM {{ ref('CURATION_YELLOW_TAXI') }}
+GROUP BY PICKUP_HOUR
+ORDER BY PICKUP_HOUR
